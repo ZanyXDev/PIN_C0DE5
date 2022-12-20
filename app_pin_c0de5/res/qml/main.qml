@@ -56,6 +56,8 @@ QQC2.ApplicationWindow {
     }
 
     // ----- Visual children
-
+    PinButton {
+        id: testButton
+    }
     // ----- JavaScript functions
 }
