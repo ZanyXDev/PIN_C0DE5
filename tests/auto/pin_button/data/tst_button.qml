@@ -14,27 +14,28 @@ TestCase {
 
     Component {
         id: button
-        PinButton {}
+        PinButton {
+            id: testPINButton
+        }
+    }
+
+    Component {
+        id: signalSpy
+        SignalSpy {}
     }
 
     function initTestCase() {}
 
     function cleanupTestCase() {}
 
-    function test_case1() {
-        compare(1 + 1, 2, "sanity check")
-        verify(true)
-    }
-
-    function test_text() {
+    function test_signalClicked() {
         var control = createTemporaryObject(button, testCase)
         verify(control)
 
-        compare(control.text, "")
-        control.text = "Button"
-        compare(control.text, "Button")
-        control.text = ""
-        compare(control.text, "")
+        var clickSpy = signalSpy.createObject(control, {
+                                                  "target": control,
+                                                  "signalName": "clicked"
+                                              })
+        verify(clickSpy.valid)
     }
-
 }
