@@ -14,9 +14,7 @@ TestCase {
 
     Component {
         id: button
-        PinButton {
-            id: testPINButton
-        }
+        PinButton {}
     }
 
     Component {
@@ -28,14 +26,22 @@ TestCase {
 
     function cleanupTestCase() {}
 
-    function test_signalClicked() {
+    function test_clickedWithNumpudKeyNotSet() {
         var control = createTemporaryObject(button, testCase)
         verify(control)
 
-        var clickSpy = signalSpy.createObject(control, {
-                                                  "target": control,
-                                                  "signalName": "clicked"
-                                              })
+        var clickSpy = createTemporaryObject(signalSpy, testCase, {
+                                                 "target": control,
+                                                 "signalName": "clicked"
+                                             })
         verify(clickSpy.valid)
+
+        compare(clickSpy.count, 0)
+        mouseClick(control, Qt.LeftButton, Qt.NoModifier)
+        compare(clickSpy.count, 1)
+
+        compare(clickSpy.signalArguments[0][0], 0)
+
+        compare(clickSpy.signalArguments[0][0], -1)
     }
 }
