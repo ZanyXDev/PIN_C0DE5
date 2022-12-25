@@ -1,3 +1,5 @@
 module Common
 PinButton 1.0 pin_button.qml
+KeyEnums 1.0 key_enums.qml
+
 
