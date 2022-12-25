@@ -40,8 +40,16 @@ TestCase {
         mouseClick(control, Qt.LeftButton, Qt.NoModifier)
         compare(clickSpy.count, 1)
 
-        compare(clickSpy.signalArguments[0][0], 0)
 
-        compare(clickSpy.signalArguments[0][0], -1)
+        /**
+          * This property holds a list of emitted signal arguments. Each emission of the signal
+          * will append one item to the list, containing the arguments of the signal.
+          * When connecting to a new target or new signalName or calling the clear() method,
+          *  the signalArguments will be reset to empty.
+          */
+        compare(clickSpy.signalArguments[0][0], 0)
+        for (var i = 0; i < clickSpy.signalArguments.length; i++) {
+            warn(`signal number ${i}, arguments[${clickSpy.signalArguments[i][0]}]`)
+        }
     }
 }
