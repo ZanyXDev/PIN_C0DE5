@@ -60,30 +60,48 @@ TestCase {
         compare(control.numpadKey, data.result)
     }
 
-    function test_clickedWithNumpudKeyNotSet() {
-        var control = createTemporaryObject(button, testCase)
+    function test_signalClicked_data() {
+        return [{
+                    "tag": "set numpadKey = undefined, signal clicked( -1 )",
+                    "result": -1
+                }, {
+                    "tag": "set numpadKey = -1, signal clicked( -1 )",
+                    "result": -1
+                }, {
+                    "tag": "set numpadKey = >9, signal clicked( -1 )",
+                    "result": -1
+                }, {
+                    "tag": "set numpadKey = 0, signal clicked( 0 )",
+                    "result": 0
+                }]
+    }
+
+    function test_signalClicked(data) {
+        // Create PinButton with  property  numpadKey: data.numpadKey
+        var control = createTemporaryObject(button, testCase, {
+                                                "numpadKey": data.numpadKey
+                                            })
         verify(control)
 
+        // Setup SignalSpy object
         var clickSpy = createTemporaryObject(signalSpy, testCase, {
                                                  "target": control,
                                                  "signalName": "clicked"
                                              })
         verify(clickSpy.valid)
 
+        // Check mouse click on the button
         compare(clickSpy.count, 0)
         mouseClick(control, Qt.LeftButton, Qt.NoModifier)
         compare(clickSpy.count, 1)
 
 
         /**
-          * This property holds a list of emitted signal arguments. Each emission of the signal
-          * will append one item to the list, containing the arguments of the signal.
-          * When connecting to a new target or new signalName or calling the clear() method,
-          *  the signalArguments will be reset to empty.
-          */
-        //        compare(clickSpy.signalArguments[0][0], 0)
-        //        for (var i = 0; i < clickSpy.signalArguments.length; i++) {
-        //            warn(`signal number ${i}, arguments[${clickSpy.signalArguments[i][0]}]`)
-        //        }
+           * This property holds a list of emitted signal arguments. Each emission of the signal
+           * will append one item to the list, containing the arguments of the signal.
+           * When connecting to a new target or new signalName or calling the clear() method,
+           *  the signalArguments will be reset to empty.
+           */
+        compare(clickSpy.signalArguments[0][0], data.result)
     }
 }
