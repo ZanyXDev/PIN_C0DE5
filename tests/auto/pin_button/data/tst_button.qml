@@ -35,20 +35,56 @@ TestCase {
 
     function test_create_data() {
         return [{
-                    "tag": "Without set numpadKey",
+                    "tag": "set numpadKey = undefined",
                     "result": -1
                 }, {
-                    "tag": "set numpadKey  < 0",
+                    "tag": "set numpadKey = -1",
                     "numpadKey": -1,
                     "result": -1
                 }, {
-                    "tag": "set numpadKey >9 ",
+                    "tag": "set numpadKey = >9 ",
                     "numpadKey": 10,
                     "result": -1
                 }, {
                     "tag": "set numpadKey = 0",
                     "numpadKey": 0,
                     "result": 0
+                }, {
+                    "tag": "set numpadKey = 1",
+                    "numpadKey": 1,
+                    "result": 1
+                }, {
+                    "tag": "set numpadKey = 2",
+                    "numpadKey": 2,
+                    "result": 2
+                }, {
+                    "tag": "set numpadKey = 3",
+                    "numpadKey": 3,
+                    "result": 3
+                }, {
+                    "tag": "set numpadKey = 4",
+                    "numpadKey": 4,
+                    "result": 4
+                }, {
+                    "tag": "set numpadKey =5",
+                    "numpadKey": 5,
+                    "result": 5
+                }, {
+                    "tag": "set numpadKey = 6",
+                    "numpadKey": 6,
+                    "result": 6
+                }, {
+                    "tag": "set numpadKey = 7",
+                    "numpadKey": 7,
+                    "result": 7
+                }, {
+                    "tag": "set numpadKey = 8",
+                    "numpadKey": 8,
+                    "result": 8
+                }, {
+                    "tag": "set numpadKey = 9",
+                    "numpadKey": 9,
+                    "result": 9
                 }]
     }
 
