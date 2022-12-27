@@ -3,6 +3,5 @@
         <file>qtquickcontrols2.conf</file>
         <file>Common/qmldir</file>
         <file>Common/pin_button.qml</file>
-        <file>Common/key_enums.qml</file>
     </qresource>
 </RCC>
