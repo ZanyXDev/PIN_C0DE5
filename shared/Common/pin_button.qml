@@ -7,6 +7,12 @@ Item {
     height: 35
 
     signal clicked(int numpadKeyId)
+
+    onNumpadKeyChanged: {
+        if ((numpadKey < 0 || numpadKey > 9) && (numpadKey != -1)) {
+            numpadKey = -1
+        }
+    }
     Rectangle {
         id: textContainer
         anchors.fill: parent
