@@ -31,7 +31,8 @@ SOURCES += \
 
 RESOURCES += \
 	qml.qrc \
-	../shared/quick_shared.qrc
+	../shared/quick_shared.qrc \
+	../shared/fonts.qrc
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH = ../shared
