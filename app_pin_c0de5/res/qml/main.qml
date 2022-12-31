@@ -58,6 +58,9 @@ QQC2.ApplicationWindow {
     // ----- Visual children
     PinButton {
         id: testButton
+        width: 64
+        height: 64
+        numpadKey: 5
     }
     // ----- JavaScript functions
 }
